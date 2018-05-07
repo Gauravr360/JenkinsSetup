@@ -1,0 +1,8 @@
+<suite name="practice">
+	
+	<test name="test1" >
+		<classes >
+			<class name="practice.ExtentReportDemo"></class>
+		</classes>
+	</test>
+</suite>
