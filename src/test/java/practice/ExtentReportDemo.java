@@ -1,8 +1,10 @@
 package practice;
 
 import java.lang.reflect.Method;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -14,37 +16,34 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class ExtentReportDemo {
 
-	public static ExtentReports extent;
-	public static ExtentTest test;
 	public static WebDriver driver;
+	static String browser;
 	
 	@BeforeMethod
-	public void beforeMethod(Method method){
-		extent = new ExtentReports("D://Report.html", true);
-		test= extent.startTest(method.getName(),this.getClass().getName());
-		test.assignAuthor("Gaurav Rajput");
-		test.assignCategory(this.getClass().getSimpleName());
-		System.setProperty("webdriver.chrome.driver", "E://AutomatedTesting//Mobizio//src//test//resources//webdriver/chromedriver.exe");
-		driver = new ChromeDriver();
-		test.log(LogStatus.PASS, "browser launched successfully");
+	public void beforeMethod(){
+		String browser= System.getProperty("browser");
+		if(browser.equals("chrome")){
+			System.out.println("rinning on chrome");
+			System.setProperty("webdriver.chrome.driver", "D://Automation Projects//Mobizio_AppiumPractice//Mobizio//src//test//resources//webdriver/chromedriver.exe");
+			driver= new ChromeDriver();
+		}
+		
+		else{
+			System.out.println("rinning on firefox");
+			System.setProperty("webdriver.gecko.driver", "D://Automation Projects//Mobizio_AppiumPractice//Mobizio//src//test//resources//webdriver/geckodriver.exe");
+			driver= new FirefoxDriver();
+		}
 	}
 	
 	@Test
 	public void methodName(){
-		System.out.println("test executed");
+		driver.get("https://www.google.com/");
 		
 	}
 	
 	@AfterMethod
-	public void afterMethod(ITestResult result){
-		if(result.getStatus() == ITestResult.FAILURE){
-			System.out.println("add method to take screen shot");
-		}
+	public void afterMethod(){
 		driver.close();
-		test.log(LogStatus.PASS, "browser closed successfully");
-		extent.endTest(test);
-		extent.flush();
-		extent.close();
 	}
 	
 	
