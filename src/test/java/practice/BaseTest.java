@@ -15,7 +15,10 @@ public class BaseTest {
 	
 	@BeforeClass
 	public void beforeMethod(){
-		String browser= System.getProperty("browser");
+		browser= System.getProperty("browser");
+		if(browser == null){
+			browser= "chrome";
+		}
 		if(browser.equals("chrome")){
 			System.out.println("running script on chrome");
 			System.setProperty("webdriver.chrome.driver", "D://Automation Projects//Mobizio_AppiumPractice//Mobizio//src//test//resources//webdriver/chromedriver.exe");
