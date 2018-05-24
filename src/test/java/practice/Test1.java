@@ -18,7 +18,7 @@ public class Test1 extends BaseTest{
 
 	@Test
 	public void methodName(){
-		System.out.println("running test 1 on "+browser+"");
+		System.out.println("running test 1");
 	}
 
 }
