@@ -53,7 +53,7 @@
             <configuration>
               <testFailureIgnore>false</testFailureIgnore>
               <suiteXmlFiles>
-                <file>src/test/java/suit.xml</file>
+                <file>src/test/java/suite.xml</file>
               </suiteXmlFiles>
               <properties>
                 <property>

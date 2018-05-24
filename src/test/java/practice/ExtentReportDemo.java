@@ -23,13 +23,13 @@ public class ExtentReportDemo {
 	public void beforeMethod(){
 		String browser= System.getProperty("browser");
 		if(browser.equals("chrome")){
-			System.out.println("rinning on chrome");
+			System.out.println("running on chrome");
 			System.setProperty("webdriver.chrome.driver", "D://Automation Projects//Mobizio_AppiumPractice//Mobizio//src//test//resources//webdriver/chromedriver.exe");
 			driver= new ChromeDriver();
 		}
 		
 		else{
-			System.out.println("rinning on firefox");
+			System.out.println("running on firefox");
 			System.setProperty("webdriver.gecko.driver", "D://Automation Projects//Mobizio_AppiumPractice//Mobizio//src//test//resources//webdriver/geckodriver.exe");
 			driver= new FirefoxDriver();
 		}
